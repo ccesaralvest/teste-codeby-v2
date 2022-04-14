@@ -3,7 +3,8 @@ let miniCartTotal = document.getElementById('miniCartTotal');
 
 async function getData(){
 
-    const cartcheap = 'https://raw.githubusercontent.com/ccesaralvest/teste-codeby/main/data/abaixo-10-reais.json'
+    const cartCheap = 'https://raw.githubusercontent.com/ccesaralvest/teste-codeby/main/data/abaixo-10-reais.json'
+
     //variavel guarda essa string pra mim
     const dataUrl = 'https://raw.githubusercontent.com/ccesaralvest/teste-codeby/main/data/acima-10-reais.json';
 
@@ -23,15 +24,19 @@ async function getData(){
 
                 <section class="miniCartItemData">
                     <p id="miniCartItemName" >${el.name}</p>
-                    <p id="miniCartItemPrice" >${el.price}</p>
                     <p id="miniCartItemListPrice" >${el.listPrice}</p>
+                    <p id="miniCartItemPrice" >${el.price}</p>
                 </section>
             </li>
         `;
     });
     
-    miniCartTotal.innerHTML = miniCartCount;
-
+    if (miniCartCount <= 1000){
+        miniCartTotal.innerHTML = `<p>${miniCartCount}</p>`
+    } else {
+        miniCartTotal.innerHTML = `<p>${miniCartCount}</p> <p>Frete Gratis</p>`;
+    }
+    
     miniCartItems.innerHTML = miniCartItemsHTML.join('');
 }
 getData();
