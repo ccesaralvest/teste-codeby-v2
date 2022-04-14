@@ -1,18 +1,41 @@
 <!DOCTYPE html>
+
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste Codeby Ccesar</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Teste Codeby Ccesar</title>       
+        <style>
+            #miniCartItemImage {
+                width:120px;
+                height:120px;
+                border:solid 1px grey;
+                display:flex;
+                align-items:center;
+                overflow:hidden;
+                justify-content:center;
+            }
+            .miniCartItem {
+                list-style:none;
+                display:flex;
+                justify-content:flex-start;
+            }
+        </style>
+    </head>
 
-    <script>
-        //fetch product data 
+    <body>
+        <section id="miniCart">
+            <section id="miniCartApp">
+                <ul id="miniCartData">
+                </ul>
+            </section>
+            <section>
+                <p>Total</p>
+                <p id="miniCartTotal"></p>
+            </section>
+        </section>
 
-    </script>
-</head>
-<body>
-    
-    
-</body>
+        <script src="assets/javascript/scripts.js"></script>
+    </body>
 </html>
