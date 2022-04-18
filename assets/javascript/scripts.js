@@ -2,21 +2,16 @@ const miniCartItems = document.getElementById('miniCartData');
 let miniCartTotal = document.getElementById('miniCartTotal');
 
 async function getData(){
-
-    const cartCheap = 'https://raw.githubusercontent.com/ccesaralvest/teste-codeby/main/data/abaixo-10-reais.json'
-
-    //variavel guarda essa string pra mim
+    const cartCheap = 'https://raw.githubusercontent.com/ccesaralvest/teste-codeby/main/data/abaixo-10-reais.json';
     const dataUrl = 'https://raw.githubusercontent.com/ccesaralvest/teste-codeby/main/data/acima-10-reais.json';
-
-    //variavel guarda pra mim "quando chegar" os dados da URL
     const dataResult = await fetch(dataUrl).then((resp) => resp.json());
     const items = dataResult.items;
+
     let miniCartCount = 0;
-  
     let miniCartItemsHTML = items.map( el =>  {
         miniCartCount = el.listPrice += miniCartCount;  
 
-        return `
+        return`
             <li class="miniCartItem">
                 <section class="miniCartItemImageContainer">
                     <img id="miniCartItemImage" src="${el.imageUrl}"/>
@@ -30,13 +25,20 @@ async function getData(){
             </li>
         `;
     });
-    
+
+    const formatter = new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+        minimumFractionDigits: 2
+    })
+
     if (miniCartCount <= 1000){
         miniCartTotal.innerHTML = `<p>${miniCartCount}</p>`
     } else {
-        miniCartTotal.innerHTML = `<p>${miniCartCount}</p> <p>Frete Gratis</p>`;
+        miniCartTotal.innerHTML = `<p>${formatter.format(miniCartCount)}</p> <p>Frete Gratis</p>`;
     }
-    
+
     miniCartItems.innerHTML = miniCartItemsHTML.join('');
 }
+
 getData();

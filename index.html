@@ -6,34 +6,31 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Teste Codeby Ccesar</title>       
-        <style>
-            #miniCartItemImage {
-                width:120px;
-                height:120px;
-                border:solid 1px grey;
-                display:flex;
-                align-items:center;
-                overflow:hidden;
-                justify-content:center;
-            }
-            .miniCartItem {
-                list-style:none;
-                display:flex;
-                justify-content:flex-start;
-            }
-        </style>
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;800&display=swap" rel="stylesheet">
     </head>
 
     <body>
         <section id="miniCart">
+            <header>
+                <h1>Meu Carrinho</h1>
+            </header>
+
             <section id="miniCartApp">
-                <ul id="miniCartData">
+                <ul id="miniCartData" class="miniCartItems">
                 </ul>
             </section>
+            
             <section>
                 <p>Total</p>
                 <p id="miniCartTotal"></p>
             </section>
+
+            <footer>
+                <button>Finalizar compra</button>
+            </footer>
         </section>
 
         <script src="assets/javascript/scripts.js"></script>
