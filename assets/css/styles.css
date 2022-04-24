@@ -59,7 +59,7 @@ p {
 }
 .miniCartItems {
     overflow: scroll;
-    height: 660px;
+    max-height: 660px;
     max-width: 100%;
     padding-left: 0px;
 }
