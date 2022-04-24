@@ -17,7 +17,7 @@ async function buildCart(){
         return`
             <li class="miniCartItem">
                 <section class="miniCartItemImageContainer">
-                    <img id="miniCartItemImage" src="${el.imageUrl}"/>
+                    <img id="miniCartItemImage" src="${el.imageUrl.replace("http", "https")}"/>
                 </section>
 
                 <section class="miniCartItemData">
