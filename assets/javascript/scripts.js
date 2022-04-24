@@ -2,9 +2,10 @@ const miniCartItems = document.getElementById('miniCartData');
 let miniCartTotal = document.getElementById('miniCartTotal');
 
 async function buildCart(){
+    // change fetch to dataUrl variable to see freeshipping bar
     const cartCheap = 'https://raw.githubusercontent.com/ccesaralvest/teste-codeby/main/data/abaixo-10-reais.json';
     const dataUrl = 'https://raw.githubusercontent.com/ccesaralvest/teste-codeby/main/data/acima-10-reais.json';
-    const dataResult = await fetch(dataUrl).then((resp) => resp.json());
+    const dataResult = await fetch(cartCheap).then((resp) => resp.json());
     const items = dataResult.items;
 
     let miniCartCount = 0;
