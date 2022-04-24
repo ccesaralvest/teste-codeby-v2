@@ -4,7 +4,7 @@ let miniCartTotal = document.getElementById('miniCartTotal');
 async function buildCart(){
     const cartCheap = 'https://raw.githubusercontent.com/ccesaralvest/teste-codeby/main/data/abaixo-10-reais.json';
     const dataUrl = 'https://raw.githubusercontent.com/ccesaralvest/teste-codeby/main/data/acima-10-reais.json';
-    const dataResult = await fetch(cartCheap).then((resp) => resp.json());
+    const dataResult = await fetch(dataUrl).then((resp) => resp.json());
     const items = dataResult.items;
 
     let miniCartCount = 0;
@@ -28,12 +28,6 @@ async function buildCart(){
         `;
     });
 
-    const formatter = new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL',
-        minimumFractionDigits: 2
-    })
-
     if (miniCartCount <= 1000){
         miniCartTotal.innerHTML = `<section class="totalizer">
                                         <p>Total</p>
@@ -53,6 +47,7 @@ async function buildCart(){
 
     miniCartItems.innerHTML = miniCartItemsHTML.join('');
 }
+
 document.addEventListener("DOMContentLoaded", function(e) {
     buildCart();
 });
