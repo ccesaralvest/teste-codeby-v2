@@ -1,13 +1,15 @@
 const miniCartItems = document.getElementById('miniCartData');
 let miniCartTotal = document.getElementById('miniCartTotal');
 
-async function getData(){
+async function buildCart(){
     const cartCheap = 'https://raw.githubusercontent.com/ccesaralvest/teste-codeby/main/data/abaixo-10-reais.json';
     const dataUrl = 'https://raw.githubusercontent.com/ccesaralvest/teste-codeby/main/data/acima-10-reais.json';
-    const dataResult = await fetch(dataUrl).then((resp) => resp.json());
+    const dataResult = await fetch(cartCheap).then((resp) => resp.json());
     const items = dataResult.items;
 
     let miniCartCount = 0;
+    
+    //create a html with data - product infos
     let miniCartItemsHTML = items.map( el =>  {
         miniCartCount = el.listPrice += miniCartCount;  
 
@@ -18,9 +20,9 @@ async function getData(){
                 </section>
 
                 <section class="miniCartItemData">
-                    <p id="miniCartItemName" >${el.name}</p>
-                    <p id="miniCartItemListPrice" >${el.listPrice}</p>
-                    <p id="miniCartItemPrice" >${el.price}</p>
+                    <p id="miniCartItemName">${el.name}</p>
+                    <p id="miniCartItemListPrice">R$ ${(el.listPrice/100).toFixed( 2 ).replace(".", ",")}</p>
+                    <p id="miniCartItemPrice">R$ ${(el.price/100).toFixed( 2 ).replace(".", ",")}</p>
                 </section>
             </li>
         `;
@@ -33,12 +35,24 @@ async function getData(){
     })
 
     if (miniCartCount <= 1000){
-        miniCartTotal.innerHTML = `<p>${miniCartCount}</p>`
-    } else {
-        miniCartTotal.innerHTML = `<p>${formatter.format(miniCartCount)}</p> <p>Frete Gratis</p>`;
+        miniCartTotal.innerHTML = `<section class="totalizer">
+                                        <p>Total</p>
+                                        <p>R$ ${(miniCartCount/100).toFixed( 2 ).replace(".", ",")}</p>
+                                    </section>`
+    } 
+    else {
+        miniCartTotal.innerHTML = `<section class="totalizerWithShipping">
+                                        <p>Total</p>
+                                        <p>R$ ${(miniCartCount/100).toFixed( 2 ).replace(".", ",")}</p>
+                                    </section>
+                                    <section class="miniCartFreeShipping">
+                                        <p>Parabéns, sua compra tem frete grátis!</p>
+                                    </section>
+                                    `;
     }
 
     miniCartItems.innerHTML = miniCartItemsHTML.join('');
 }
-
-getData();
+document.addEventListener("DOMContentLoaded", function(e) {
+    buildCart();
+});
